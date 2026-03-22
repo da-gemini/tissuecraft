@@ -1,174 +1,108 @@
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Gift, Building2, Heart, Phone, Mail, MapPin, ChevronRight, Palette, Printer, Package } from "lucide-react";
-import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
+import {
+  Droplets, Utensils, Plane, PartyPopper, Heart, Package,
+  ChevronRight, Palette, Printer, Building2, ShieldCheck
+} from "lucide-react";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import RevealSection from "@/components/layout/RevealSection";
 
 const products = [
-  {
-    icon: Building2,
-    title: "Custom Logo Tissues",
-    description: "Premium 2-ply tissues with your brand or event logo. Perfect for trade shows, conferences, and everyday branding.",
-  },
-  {
-    icon: Heart,
-    title: "Wedding Favor Tissues",
-    description: "Elegant tissues for wedding guest favors. Happy tears guaranteed — beautifully packaged for your special day.",
-  },
-  {
-    icon: Gift,
-    title: "Corporate Branded Tissues",
-    description: "Promote your business with custom-printed tissues. A thoughtful touch that keeps your brand top of mind.",
-  },
+  { icon: Droplets, title: "Scented Wet Wipes", description: "Premium scented wipes perfect for restaurants, airlines, and hospitality — individually wrapped for hygiene." },
+  { icon: Utensils, title: "Restaurant Hand Wipes", description: "Refreshment wipes designed for dining. Compact sachets that elevate the guest experience at every table." },
+  { icon: PartyPopper, title: "Event Sachet Wipes", description: "Custom-branded sachet wipes for weddings, corporate events, and large gatherings — a thoughtful guest touch." },
+  { icon: Heart, title: "Facial Tissues", description: "Soft 2-ply facial tissues available in custom-branded boxes and packs. Ideal for retail and hospitality." },
+  { icon: Package, title: "Table Napkins", description: "Quality table napkins with custom print options — perfect for restaurants, cafés, and catering services." },
+  { icon: Building2, title: "Utility Tissue Packs", description: "Versatile tissue packs for everyday use. Available in bulk for institutional and retail distribution." },
+];
+
+const useCases = [
+  { icon: Utensils, label: "Restaurants & Cafés" },
+  { icon: Plane, label: "Airlines & Travel" },
+  { icon: Building2, label: "Corporate Events" },
+  { icon: Heart, label: "Weddings & Gatherings" },
+  { icon: ShieldCheck, label: "Promotional Branding" },
 ];
 
 const services = [
-  {
-    icon: Palette,
-    step: "01",
-    title: "We Help You Design",
-    desc: "Share your vision and our team will craft a custom print that represents your brand beautifully.",
-  },
-  {
-    icon: Printer,
-    step: "02",
-    title: "We Print Sachets",
-    desc: "Your design is printed on premium soft tissue using eco-friendly inks with meticulous quality control.",
-  },
-  {
-    icon: Package,
-    step: "03",
-    title: "Build Your Brand",
-    desc: "Custom printed sachets elevate your brand presence at every touchpoint — events, stores, or gifts.",
-  },
+  { icon: Palette, title: "Custom Design", desc: "Share your brand vision — we design custom packaging with your logo, colors, and preferred fragrance." },
+  { icon: Printer, title: "Quality Production", desc: "Printed on premium material using eco-friendly inks. Every sachet and pack passes rigorous quality checks." },
+  { icon: Package, title: "Flexible Supply", desc: "From bulk cartons to branded retail packs and event-volume orders — we scale to your needs." },
 ];
-
-function useReveal() {
-  const ref = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          el.classList.add("revealed");
-          observer.unobserve(el);
-        }
-      },
-      { threshold: 0.15 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-  return ref;
-}
-
-function RevealSection({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  const ref = useReveal();
-  return (
-    <div ref={ref} className={`reveal-section ${className}`}>
-      {children}
-    </div>
-  );
-}
-
-const CONTACT_EMAIL = "nextor.enterprises@gmail.com";
 
 const Index = () => {
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "hsl(35, 30%, 97%)", color: "hsl(15, 20%, 18%)" }}>
-      {/* Nav */}
-      <nav className="sticky top-0 z-50 border-b" style={{ borderColor: "hsl(25, 20%, 88%)", backgroundColor: "hsla(35, 30%, 97%, 0.95)", backdropFilter: "blur(12px)" }}>
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <span className="text-lg font-bold tracking-tight" style={{ color: "hsl(15, 55%, 42%)" }}>
-            TissueCraft
-          </span>
-          <div className="hidden items-center gap-8 md:flex">
-            <a href="#products" className="text-sm transition-colors" style={{ color: "hsl(15, 10%, 50%)" }}>Products</a>
-            <a href="#services" className="text-sm transition-colors" style={{ color: "hsl(15, 10%, 50%)" }}>Our Process</a>
-            <a href="#contact" className="text-sm transition-colors" style={{ color: "hsl(15, 10%, 50%)" }}>Contact</a>
-          </div>
-          <a
-            href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Quote Request — TissueCraft")}`}
-            className="inline-flex h-9 items-center rounded-md px-4 text-sm font-medium text-white transition-transform active:scale-[0.97]"
-            style={{ backgroundColor: "hsl(15, 55%, 42%)" }}
-          >
-            Get a Quote
-          </a>
-        </div>
-      </nav>
+    <div className="min-h-screen bg-background text-foreground">
+      <Navbar />
 
       {/* Hero */}
-      <section className="relative overflow-hidden px-6 py-24 md:py-32">
-        <div className="mx-auto max-w-6xl">
+      <section className="relative overflow-hidden px-6 py-24 md:py-36">
+        {/* Background pattern */}
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute -right-40 -top-40 h-[600px] w-[600px] rounded-full bg-primary/[0.06]" />
+          <div className="absolute -left-20 bottom-0 h-[400px] w-[400px] rounded-full bg-accent/[0.07]" />
+          <svg className="absolute inset-0 h-full w-full opacity-[0.03]" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+                <path d="M 48 0 L 0 0 0 48" fill="none" stroke="currentColor" strokeWidth="1" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid)" />
+          </svg>
+        </div>
+        <div className="relative mx-auto max-w-6xl">
           <RevealSection className="max-w-2xl">
-            <p className="mb-4 text-sm font-medium uppercase tracking-widest" style={{ color: "hsl(15, 30%, 55%)" }}>
-              Handcrafted quality since 2018
+            <p className="mb-4 text-sm font-medium uppercase tracking-widest text-accent">
+              Ontario-based · B2B Supply
             </p>
-            <h1
-              className="text-4xl font-bold leading-[1.1] tracking-tight md:text-5xl lg:text-6xl"
-              style={{ textWrap: "balance" as any, color: "hsl(15, 25%, 16%)" }}
-            >
-              Premium Custom Tissues for Every Occasion
+            <h1 className="text-4xl font-bold leading-[1.08] tracking-tight md:text-5xl lg:text-6xl" style={{ textWrap: "balance" as any }}>
+              Custom Tissues & Wet Wipes for Every Business
             </h1>
-            <p className="mt-6 max-w-lg text-lg" style={{ textWrap: "pretty" as any, color: "hsl(15, 10%, 45%)" }}>
-              High-quality printed tissues for weddings, corporate events &amp; branding.
-              Minimum order just 100 packs.
+            <p className="mt-6 max-w-lg text-lg text-muted-foreground" style={{ textWrap: "pretty" as any }}>
+              Premium scented wipes, facial tissues, and table napkins — custom-designed and supplied in bulk for restaurants, events, and retail branding.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
+              <Link
+                to="/contact"
+                className="inline-flex h-11 items-center gap-2 rounded-md bg-primary px-6 text-sm font-medium text-primary-foreground transition-transform active:scale-[0.97]"
+              >
+                Get a Quote <ChevronRight className="h-4 w-4" />
+              </Link>
               <a
                 href="#products"
-                className="inline-flex h-11 items-center gap-2 rounded-md px-6 text-sm font-medium text-white transition-transform active:scale-[0.97]"
-                style={{ backgroundColor: "hsl(15, 55%, 42%)" }}
+                className="inline-flex h-11 items-center rounded-md border border-primary px-6 text-sm font-medium text-primary transition-transform active:scale-[0.97]"
               >
-                Browse Products <ChevronRight className="h-4 w-4" />
-              </a>
-              <a
-                href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Sample Request — TissueCraft")}`}
-                className="inline-flex h-11 items-center rounded-md border px-6 text-sm font-medium transition-transform active:scale-[0.97]"
-                style={{ borderColor: "hsl(15, 55%, 42%)", color: "hsl(15, 55%, 42%)" }}
-              >
-                Request Samples
+                Browse Products
               </a>
             </div>
           </RevealSection>
         </div>
-        {/* Decorative blob */}
-        <div
-          className="pointer-events-none absolute -right-32 -top-32 h-[500px] w-[500px] rounded-full opacity-[0.08]"
-          style={{ background: "radial-gradient(circle, hsl(15, 55%, 50%), transparent 70%)" }}
-        />
       </section>
 
       {/* Products */}
-      <section id="products" className="border-t px-6 py-20 md:py-28" style={{ borderColor: "hsl(25, 20%, 88%)" }}>
-        <div className="mx-auto max-w-6xl">
+      <section id="products" className="relative border-t border-border px-6 py-20 md:py-28">
+        <div className="pointer-events-none absolute inset-0 bg-secondary/50" />
+        <div className="relative mx-auto max-w-6xl">
           <RevealSection>
             <h2 className="text-3xl font-bold tracking-tight md:text-4xl" style={{ textWrap: "balance" as any }}>
-              Our Products
+              Our Product Range
             </h2>
-            <p className="mt-3 max-w-md" style={{ color: "hsl(15, 10%, 50%)" }}>
-              Every pack is printed on soft, premium 2-ply tissue using eco-friendly inks.
+            <p className="mt-3 max-w-md text-muted-foreground">
+              From scented wet wipes to custom-branded napkins — everything your business needs, packaged your way.
             </p>
           </RevealSection>
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {products.map((product, i) => (
               <RevealSection key={product.title}>
-                <Card
-                  className="group h-full transition-shadow duration-300 hover:shadow-lg"
-                  style={{ borderColor: "hsl(25, 20%, 88%)", backgroundColor: "hsl(35, 25%, 99%)", transitionDelay: `${i * 80}ms` }}
-                >
+                <Card className="group h-full border-border bg-card transition-shadow duration-300 hover:shadow-lg" style={{ transitionDelay: `${i * 70}ms` }}>
                   <CardContent className="flex h-full flex-col p-8">
-                    <div
-                      className="mb-6 flex h-12 w-12 items-center justify-center rounded-lg"
-                      style={{ backgroundColor: "hsl(15, 40%, 92%)", color: "hsl(15, 55%, 42%)" }}
-                    >
+                    <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-lg bg-muted text-primary">
                       <product.icon className="h-6 w-6" />
                     </div>
-                    <h3 className="text-xl font-semibold" style={{ color: "hsl(15, 25%, 16%)" }}>{product.title}</h3>
-                    <p className="mt-3 flex-1 text-sm leading-relaxed" style={{ color: "hsl(15, 10%, 50%)" }}>
-                      {product.description}
-                    </p>
+                    <h3 className="text-xl font-semibold">{product.title}</h3>
+                    <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">{product.description}</p>
                   </CardContent>
                 </Card>
               </RevealSection>
@@ -177,27 +111,25 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Services / Process */}
-      <section id="services" className="border-t px-6 py-20 md:py-28" style={{ borderColor: "hsl(25, 20%, 88%)", backgroundColor: "hsl(30, 25%, 94%)" }}>
-        <div className="mx-auto max-w-6xl">
+      {/* Customization & Services */}
+      <section className="relative border-t border-border px-6 py-20 md:py-28">
+        <div className="pointer-events-none absolute right-0 top-0 h-[500px] w-[500px] rounded-full bg-primary/[0.04]" />
+        <div className="relative mx-auto max-w-6xl">
           <RevealSection>
-            <h2 className="text-3xl font-bold tracking-tight md:text-4xl">What We Do For You</h2>
-            <p className="mt-3 max-w-md" style={{ color: "hsl(15, 10%, 50%)" }}>
-              From design to delivery, we handle everything so you can focus on your brand.
+            <h2 className="text-3xl font-bold tracking-tight md:text-4xl">How We Work With You</h2>
+            <p className="mt-3 max-w-md text-muted-foreground">
+              From design to delivery — we handle everything so you can focus on your brand.
             </p>
           </RevealSection>
           <div className="mt-12 grid gap-10 sm:grid-cols-3">
             {services.map((item, i) => (
-              <RevealSection key={item.step}>
+              <RevealSection key={item.title}>
                 <div style={{ transitionDelay: `${i * 100}ms` }}>
-                  <div
-                    className="mb-4 flex h-10 w-10 items-center justify-center rounded-full"
-                    style={{ backgroundColor: "hsl(15, 40%, 92%)", color: "hsl(15, 55%, 42%)" }}
-                  >
+                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-muted text-primary">
                     <item.icon className="h-5 w-5" />
                   </div>
-                  <h3 className="text-lg font-semibold" style={{ color: "hsl(15, 25%, 16%)" }}>{item.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed" style={{ color: "hsl(15, 10%, 50%)" }}>{item.desc}</p>
+                  <h3 className="text-lg font-semibold">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.desc}</p>
                 </div>
               </RevealSection>
             ))}
@@ -205,48 +137,49 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Contact / CTA */}
-      <section id="contact" className="border-t px-6 py-20 md:py-28" style={{ borderColor: "hsl(25, 20%, 88%)" }}>
+      {/* Ideal Use Cases */}
+      <section className="border-t border-border px-6 py-16 md:py-24 bg-secondary/50">
+        <div className="mx-auto max-w-6xl">
+          <RevealSection>
+            <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">Trusted Across Industries</h2>
+          </RevealSection>
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-6">
+            {useCases.map((uc, i) => (
+              <RevealSection key={uc.label}>
+                <div
+                  className="flex items-center gap-3 rounded-full border border-border bg-card px-5 py-3 text-sm font-medium shadow-sm"
+                  style={{ transitionDelay: `${i * 80}ms` }}
+                >
+                  <uc.icon className="h-4 w-4 text-primary" />
+                  {uc.label}
+                </div>
+              </RevealSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="border-t border-border px-6 py-20 md:py-28">
         <div className="mx-auto max-w-6xl">
           <RevealSection>
             <div className="mx-auto max-w-lg text-center">
               <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Ready to Order?</h2>
-              <p className="mt-4" style={{ color: "hsl(15, 10%, 50%)" }}>
-                Get in touch for a free quote or to request samples. We'd love to help make your event unforgettable.
+              <p className="mt-4 text-muted-foreground">
+                Whether you need product specifications, samples, or a detailed quotation — our team is ready to assist.
               </p>
-              <div className="mt-8 flex flex-col items-center gap-4 text-sm" style={{ color: "hsl(15, 10%, 50%)" }}>
-                <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-center gap-2 transition-colors hover:opacity-80">
-                  <Mail className="h-4 w-4" /> {CONTACT_EMAIL}
-                </a>
-                <a href="tel:+15551234567" className="flex items-center gap-2 transition-colors hover:opacity-80">
-                  <Phone className="h-4 w-4" /> (555) 123-4567
-                </a>
-                <span className="flex items-center gap-2">
-                  <MapPin className="h-4 w-4" /> Austin, TX
-                </span>
-              </div>
-              <a
-                href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Inquiry — TissueCraft")}`}
-                className="mt-8 inline-flex h-11 items-center rounded-md px-8 text-sm font-medium text-white transition-transform active:scale-[0.97]"
-                style={{ backgroundColor: "hsl(15, 55%, 42%)" }}
+              <Link
+                to="/contact"
+                className="mt-8 inline-flex h-11 items-center gap-2 rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground transition-transform active:scale-[0.97]"
               >
-                Send Us a Message
-              </a>
+                Submit an Inquiry <ChevronRight className="h-4 w-4" />
+              </Link>
             </div>
           </RevealSection>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t px-6 py-8" style={{ borderColor: "hsl(25, 20%, 88%)" }}>
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 text-xs sm:flex-row" style={{ color: "hsl(15, 10%, 55%)" }}>
-          <span>© 2025 TissueCraft. All rights reserved.</span>
-          <div className="flex gap-6">
-            <a href="#" className="hover:opacity-80 transition-opacity">Privacy</a>
-            <a href="#" className="hover:opacity-80 transition-opacity">Terms</a>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
