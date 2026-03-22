@@ -92,7 +92,18 @@ const Index = () => {
 
       {/* Products */}
       <section id="products" className="relative border-t border-border px-6 py-20 md:py-28">
-        <div className="pointer-events-none absolute inset-0 bg-secondary/50" />
+        <div className="pointer-events-none absolute inset-0 bg-secondary/80" />
+        {/* Dot pattern */}
+        <div className="pointer-events-none absolute inset-0">
+          <svg className="h-full w-full opacity-[0.05]" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
+                <circle cx="2" cy="2" r="1.5" fill="currentColor" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#dots)" />
+          </svg>
+        </div>
         <div className="relative mx-auto max-w-6xl">
           <RevealSection>
             <h2 className="text-3xl font-bold tracking-tight md:text-4xl" style={{ textWrap: "balance" as any }}>
