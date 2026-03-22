@@ -40,15 +40,25 @@ const Index = () => {
       <section className="relative overflow-hidden px-6 py-24 md:py-36">
         {/* Background pattern */}
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute -right-40 -top-40 h-[600px] w-[600px] rounded-full bg-primary/[0.06]" />
-          <div className="absolute -left-20 bottom-0 h-[400px] w-[400px] rounded-full bg-accent/[0.07]" />
-          <svg className="absolute inset-0 h-full w-full opacity-[0.03]" xmlns="http://www.w3.org/2000/svg">
+          <div className="absolute -right-40 -top-40 h-[600px] w-[600px] rounded-full bg-primary/[0.12]" />
+          <div className="absolute -left-20 bottom-0 h-[400px] w-[400px] rounded-full bg-accent/[0.14]" />
+          <div className="absolute left-1/2 top-1/3 h-[300px] w-[300px] -translate-x-1/2 rounded-full bg-primary/[0.06]" />
+          <svg className="absolute inset-0 h-full w-full opacity-[0.06]" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
                 <path d="M 48 0 L 0 0 0 48" fill="none" stroke="currentColor" strokeWidth="1" />
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#grid)" />
+          </svg>
+          {/* Diagonal lines decoration */}
+          <svg className="absolute right-0 top-0 h-full w-1/3 opacity-[0.04]" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="diag" width="20" height="20" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                <line x1="0" y1="0" x2="0" y2="20" stroke="currentColor" strokeWidth="1" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#diag)" />
           </svg>
         </div>
         <div className="relative mx-auto max-w-6xl">
