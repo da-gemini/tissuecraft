@@ -171,7 +171,7 @@ const Index = () => {
       </section>
 
       {/* Ideal Use Cases */}
-      <section className="border-t border-border px-6 py-16 md:py-24 bg-secondary/50">
+      <section className="relative border-t border-border px-6 py-16 md:py-24 bg-secondary/80">
         <div className="mx-auto max-w-6xl">
           <RevealSection>
             <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">Trusted Across Industries</h2>
