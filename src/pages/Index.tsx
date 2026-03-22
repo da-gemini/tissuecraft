@@ -134,7 +134,19 @@ const Index = () => {
 
       {/* Customization & Services */}
       <section className="relative border-t border-border px-6 py-20 md:py-28">
-        <div className="pointer-events-none absolute right-0 top-0 h-[500px] w-[500px] rounded-full bg-primary/[0.04]" />
+        <div className="pointer-events-none absolute right-0 top-0 h-[500px] w-[500px] rounded-full bg-primary/[0.10]" />
+        <div className="pointer-events-none absolute left-0 bottom-0 h-[350px] w-[350px] rounded-full bg-accent/[0.08]" />
+        {/* Cross-hatch pattern */}
+        <div className="pointer-events-none absolute inset-0">
+          <svg className="h-full w-full opacity-[0.03]" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="crosshatch" width="16" height="16" patternUnits="userSpaceOnUse">
+                <path d="M0 8h16M8 0v16" stroke="currentColor" strokeWidth="0.5" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#crosshatch)" />
+          </svg>
+        </div>
         <div className="relative mx-auto max-w-6xl">
           <RevealSection>
             <h2 className="text-3xl font-bold tracking-tight md:text-4xl">How We Work With You</h2>
