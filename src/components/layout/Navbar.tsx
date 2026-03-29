@@ -2,12 +2,10 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
-const CONTACT_EMAIL = "nextor.enterprises@gmail.com";
-
 const navLinks = [
+  { label: "About", href: "/#about" },
   { label: "Products", href: "/#products" },
-  { label: "About Us", href: "/about" },
-  { label: "Contact", href: "/contact" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export default function Navbar() {
@@ -31,25 +29,25 @@ export default function Navbar() {
           TissueCraft
         </Link>
         <div className="hidden items-center gap-8 md:flex">
-          {navLinks.map((l) =>
-            l.href.startsWith("/#") ? (
-              <a key={l.label} href={l.href} className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-                {l.label}
-              </a>
-            ) : (
-              <Link key={l.label} to={l.href} className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-                {l.label}
-              </Link>
-            )
-          )}
+          {navLinks.map((l) => (
+            <a
+              key={l.label}
+              href={l.href}
+              onClick={() => handleNavClick(l.href)}
+              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+            >
+              {l.label}
+            </a>
+          ))}
         </div>
         <div className="flex items-center gap-3">
-          <Link
-            to="/contact"
-            className="hidden h-9 items-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground transition-transform active:scale-[0.97] md:inline-flex"
+          <a
+            href="/#contact"
+            onClick={() => handleNavClick("/#contact")}
+            className="hidden h-9 items-center rounded-lg bg-primary px-4 text-sm font-medium text-primary-foreground transition-all hover:brightness-110 active:scale-[0.97] md:inline-flex"
           >
             Get a Quote
-          </Link>
+          </a>
           <button
             onClick={() => setOpen(!open)}
             className="inline-flex h-9 w-9 items-center justify-center rounded-md text-foreground md:hidden"
@@ -61,24 +59,23 @@ export default function Navbar() {
       </div>
       {open && (
         <div className="border-t border-border px-6 pb-4 md:hidden">
-          {navLinks.map((l) =>
-            l.href.startsWith("/#") ? (
-              <a key={l.label} href={l.href} onClick={() => handleNavClick(l.href)} className="block py-3 text-sm text-muted-foreground">
-                {l.label}
-              </a>
-            ) : (
-              <Link key={l.label} to={l.href} onClick={() => setOpen(false)} className="block py-3 text-sm text-muted-foreground">
-                {l.label}
-              </Link>
-            )
-          )}
-          <Link
-            to="/contact"
-            onClick={() => setOpen(false)}
-            className="mt-2 inline-flex h-9 items-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground"
+          {navLinks.map((l) => (
+            <a
+              key={l.label}
+              href={l.href}
+              onClick={() => handleNavClick(l.href)}
+              className="block py-3 text-sm text-muted-foreground"
+            >
+              {l.label}
+            </a>
+          ))}
+          <a
+            href="/#contact"
+            onClick={() => handleNavClick("/#contact")}
+            className="mt-2 inline-flex h-9 items-center rounded-lg bg-primary px-4 text-sm font-medium text-primary-foreground"
           >
             Get a Quote
-          </Link>
+          </a>
         </div>
       )}
     </nav>
