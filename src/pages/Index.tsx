@@ -87,7 +87,7 @@ const Index = () => {
         <div className="relative mx-auto max-w-6xl">
           <RevealSection className="max-w-2xl">
             <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-border bg-secondary px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-muted-foreground">
-              <MapPin className="h-3 w-3 text-primary" /> Ontario, Canada · B2B Supply
+              B2B Supply · Custom Packaging
             </p>
             <h1 className="text-4xl font-bold leading-[1.08] tracking-tight md:text-5xl lg:text-6xl">
               Custom Tissues &amp; Wet Wipes for Every Business
@@ -123,7 +123,7 @@ const Index = () => {
               Your Trusted Partner for Custom Tissues &amp; Wet Wipes
             </h2>
             <p className="mt-4 max-w-xl text-muted-foreground leading-relaxed">
-              Based in Ontario, Canada — we specialize in manufacturing and supplying scented wet wipes, facial tissues, table napkins, and custom-branded tissue products for restaurants, events, and promotional branding.
+              We specialize in manufacturing and supplying scented wet wipes, facial tissues, table napkins, and custom-branded tissue products for restaurants, events, and promotional branding.
             </p>
           </RevealSection>
 
@@ -248,9 +248,6 @@ const Index = () => {
                   <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors">
                     <Mail className="h-4 w-4 text-primary" /> {CONTACT_EMAIL}
                   </a>
-                  <span className="flex items-center gap-3 text-muted-foreground">
-                    <MapPin className="h-4 w-4 text-primary" /> Ontario, Canada
-                  </span>
                 </div>
 
                 <div className="mt-8 space-y-4 rounded-xl border border-border bg-card p-5">
