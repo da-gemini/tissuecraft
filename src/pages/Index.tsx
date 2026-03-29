@@ -248,9 +248,6 @@ const Index = () => {
                   <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors">
                     <Mail className="h-4 w-4 text-primary" /> {CONTACT_EMAIL}
                   </a>
-                  <span className="flex items-center gap-3 text-muted-foreground">
-                    <MapPin className="h-4 w-4 text-primary" /> Ontario, Canada
-                  </span>
                 </div>
 
                 <div className="mt-8 space-y-4 rounded-xl border border-border bg-card p-5">
