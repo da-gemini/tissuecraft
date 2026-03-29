@@ -123,7 +123,7 @@ const Index = () => {
               Your Trusted Partner for Custom Tissues &amp; Wet Wipes
             </h2>
             <p className="mt-4 max-w-xl text-muted-foreground leading-relaxed">
-              Based in Ontario, Canada — we specialize in manufacturing and supplying scented wet wipes, facial tissues, table napkins, and custom-branded tissue products for restaurants, events, and promotional branding.
+              We specialize in manufacturing and supplying scented wet wipes, facial tissues, table napkins, and custom-branded tissue products for restaurants, events, and promotional branding.
             </p>
           </RevealSection>
 
