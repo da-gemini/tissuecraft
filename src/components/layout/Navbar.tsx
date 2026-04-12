@@ -1,24 +1,32 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { label: "About", href: "/#about" },
-  { label: "Products", href: "/#products" },
-  { label: "Contact", href: "/#contact" },
+  { label: "About", sectionId: "about" },
+  { label: "Products", sectionId: "products" },
+  { label: "Contact", sectionId: "contact" },
 ];
+
+function scrollToSection(id: string) {
+  const el = document.getElementById(id);
+  if (el) {
+    el.scrollIntoView({ behavior: "smooth" });
+  }
+}
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
-  const handleNavClick = (href: string) => {
+  const handleNavClick = (sectionId: string) => {
     setOpen(false);
-    if (href.startsWith("/#")) {
-      if (location.pathname === "/") {
-        const el = document.querySelector(href.replace("/", ""));
-        el?.scrollIntoView({ behavior: "smooth" });
-      }
+    if (location.pathname === "/") {
+      scrollToSection(sectionId);
+    } else {
+      navigate("/");
+      setTimeout(() => scrollToSection(sectionId), 100);
     }
   };
 
@@ -30,24 +38,22 @@ export default function Navbar() {
         </Link>
         <div className="hidden items-center gap-8 md:flex">
           {navLinks.map((l) => (
-            <a
+            <button
               key={l.label}
-              href={l.href}
-              onClick={() => handleNavClick(l.href)}
+              onClick={() => handleNavClick(l.sectionId)}
               className="text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
               {l.label}
-            </a>
+            </button>
           ))}
         </div>
         <div className="flex items-center gap-3">
-          <a
-            href="/#contact"
-            onClick={() => handleNavClick("/#contact")}
+          <button
+            onClick={() => handleNavClick("contact")}
             className="hidden h-9 items-center rounded-lg bg-primary px-4 text-sm font-medium text-primary-foreground transition-all hover:brightness-110 active:scale-[0.97] md:inline-flex"
           >
             Get a Quote
-          </a>
+          </button>
           <button
             onClick={() => setOpen(!open)}
             className="inline-flex h-9 w-9 items-center justify-center rounded-md text-foreground md:hidden"
@@ -60,22 +66,20 @@ export default function Navbar() {
       {open && (
         <div className="border-t border-border px-6 pb-4 md:hidden">
           {navLinks.map((l) => (
-            <a
+            <button
               key={l.label}
-              href={l.href}
-              onClick={() => handleNavClick(l.href)}
+              onClick={() => handleNavClick(l.sectionId)}
               className="block py-3 text-sm text-muted-foreground"
             >
               {l.label}
-            </a>
+            </button>
           ))}
-          <a
-            href="/#contact"
-            onClick={() => handleNavClick("/#contact")}
+          <button
+            onClick={() => handleNavClick("contact")}
             className="mt-2 inline-flex h-9 items-center rounded-lg bg-primary px-4 text-sm font-medium text-primary-foreground"
           >
             Get a Quote
-          </a>
+          </button>
         </div>
       )}
     </nav>
