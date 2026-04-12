@@ -7,9 +7,9 @@ export default function Footer() {
           <p className="mt-1">Premium custom tissues & wet wipes</p>
         </div>
         <div className="flex gap-6">
-          <a href="/#about" className="hover:text-foreground transition-colors">About</a>
-          <a href="/#products" className="hover:text-foreground transition-colors">Products</a>
-          <a href="/#contact" className="hover:text-foreground transition-colors">Contact</a>
+          <button onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })} className="hover:text-foreground transition-colors">About</button>
+          <button onClick={() => document.getElementById("products")?.scrollIntoView({ behavior: "smooth" })} className="hover:text-foreground transition-colors">Products</button>
+          <button onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })} className="hover:text-foreground transition-colors">Contact</button>
         </div>
         <span>© {new Date().getFullYear()} TissueCraft. All rights reserved.</span>
       </div>
