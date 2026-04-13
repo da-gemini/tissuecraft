@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://da-gemini.github.io/event-tissue-prints/",
+  "homepage": "https://da-gemini.github.io/tissuecraft/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
