@@ -55,6 +55,10 @@ const services = [
 const Index = () => {
   const [submitted, setSubmitted] = useState(false);
 
+  const scrollToSection = (sectionId: string) => {
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+  };
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
@@ -96,18 +100,20 @@ const Index = () => {
               Premium scented wipes, facial tissues, and table napkins — custom-designed and supplied in bulk for restaurants, events, and retail branding.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
-              <a
-                href="#contact"
+              <button
+                type="button"
+                onClick={() => scrollToSection("contact")}
                 className="inline-flex h-12 items-center gap-2 rounded-lg bg-primary px-7 text-sm font-semibold text-primary-foreground transition-all hover:brightness-110 active:scale-[0.97]"
               >
                 Get a Quote <ChevronRight className="h-4 w-4" />
-              </a>
-              <a
-                href="#products"
+              </button>
+              <button
+                type="button"
+                onClick={() => scrollToSection("products")}
                 className="inline-flex h-12 items-center rounded-lg border border-border bg-secondary px-7 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
               >
                 Browse Products
-              </a>
+              </button>
             </div>
           </RevealSection>
         </div>
