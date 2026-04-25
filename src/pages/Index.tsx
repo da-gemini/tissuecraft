@@ -289,7 +289,7 @@ const Index = () => {
                       </button>
                     </div>
                   ) : (
-                    <form onSubmit={handleSubmit} className="space-y-5">
+                    <form action="https://formspree.io/f/xyzabcde" method="POST" className="space-y-5">
                       <div className="grid gap-5 sm:grid-cols-2">
                         <div className="space-y-2">
                           <Label htmlFor="name">Full Name *</Label>
