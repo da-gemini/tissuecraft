@@ -7,7 +7,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import RevealSection from "@/components/layout/RevealSection";
 
-const CONTACT_EMAIL = "nextor.enterprises@gmail.com";
+const CONTACT_EMAIL = "tissuecraft.sales@gmail.com";
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
@@ -88,7 +88,7 @@ export default function Contact() {
                   {submitted ? (
                     <div className="py-12 text-center">
                       <p className="text-lg font-medium text-primary">Thank you!</p>
-                      <p className="mt-2 text-muted-foreground">Your email client should have opened with the inquiry details. If not, please email us directly at {CONTACT_EMAIL}.</p>
+                      <p className="mt-2 text-muted-foreground">We will get back to you soon regarding your enquiry.</p>
                       <button onClick={() => setSubmitted(false)} className="mt-6 text-sm text-primary underline underline-offset-4">
                         Submit another inquiry
                       </button>

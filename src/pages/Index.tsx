@@ -12,7 +12,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import RevealSection from "@/components/layout/RevealSection";
 
-const CONTACT_EMAIL = "nextor.enterprises@gmail.com";
+const CONTACT_EMAIL = "tissuecraft.sales@gmail.com";
 
 const products = [
   { icon: Droplets, title: "Scented Wet Wipes", description: "Premium scented wipes perfect for restaurants, airlines, and hospitality — individually wrapped for hygiene." },
