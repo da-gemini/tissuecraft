@@ -12,25 +12,49 @@ const CONTACT_EMAIL = "tissuecraft.sales@gmail.com";
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    const data = new FormData(form);
-    const name = data.get("name") as string;
-    const email = data.get("email") as string;
-    const company = data.get("company") as string;
-    const product = data.get("product") as string;
-    const quantity = data.get("quantity") as string;
-    const message = data.get("message") as string;
+  // const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   const form = e.currentTarget;
+  //   const data = new FormData(form);
+  //   const name = data.get("name") as string;
+  //   const email = data.get("email") as string;
+  //   const company = data.get("company") as string;
+  //   const product = data.get("product") as string;
+  //   const quantity = data.get("quantity") as string;
+  //   const message = data.get("message") as string;
 
-    const subject = encodeURIComponent(`Inquiry from ${name} — ${company || "N/A"}`);
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nCompany: ${company}\nProduct Interest: ${product}\nEstimated Quantity: ${quantity}\n\nMessage:\n${message}`
-    );
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
-    setSubmitted(true);
-  };
+  //   const subject = encodeURIComponent(`Inquiry from ${name} — ${company || "N/A"}`);
+  //   const body = encodeURIComponent(
+  //     `Name: ${name}\nEmail: ${email}\nCompany: ${company}\nProduct Interest: ${product}\nEstimated Quantity: ${quantity}\n\nMessage:\n${message}`
+  //   );
+  //   window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+  //   setSubmitted(true);
+  // };
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
 
+  const form = e.currentTarget;
+  const data = new FormData(form);
+
+  try {
+    const response = await fetch("https://formspree.io/f/mpqklprg", { // 👈 replace with YOUR Formspree URL
+      method: "POST",
+      body: data,
+      headers: {
+        Accept: "application/json",
+      },
+    });
+
+    if (response.ok) {
+      setSubmitted(true); // 👈 this already shows your success UI
+      form.reset();
+    } else {
+      alert("Something went wrong. Please try again.");
+    }
+  } catch (error) {
+    alert("Network error. Please try again.");
+  }
+};
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
