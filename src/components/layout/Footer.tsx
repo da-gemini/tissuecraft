@@ -24,7 +24,7 @@ export default function Footer() {
             <Instagram className="h-4 w-4" />
           </a>
           <a
-            href="https://www.linkedin.com/in/nextor-enterprises-539404407/"
+            href="https://www.linkedin.com/company/nextor-enterprises"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
